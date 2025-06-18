@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phasmophobia ゴースト診断完全版</title>
+  <style>
+    body { font-family: sans-serif; padding: 10px; background: #f5f5f5; }
+    .ghost { margin: 10px 0; padding: 10px; background: white; border-left: 5px solid #2196F3; }
+    .ghost-name { font-weight: bold; font-size: 1.2em; }
+    .ghost-detail { font-size: 0.9em; margin-top: 4px; }
+    .ghost-detail ul { margin: 0; padding-left: 20px; }
+    .filter { margin: 10px 0; padding: 10px; background: #e0f7fa; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+<h1>Phasmophobia ゴースト診断完全版（絞り込み + 足音 + 特徴）</h1>
+
+<div class="filter">
+  <h3>✅ 証拠で絞り込み</h3>
+  <label><input type="checkbox" class="evidence" value="EMF"> EMF</label>
+  <label><input type="checkbox" class="evidence" value="指紋"> 指紋</label>
+  <label><input type="checkbox" class="evidence" value="スピボ"> スピボ</label>
+  <label><input type="checkbox" class="evidence" value="ライティング"> ライティング</label>
+  <label><input type="checkbox" class="evidence" value="DOTS"> DOTS</label>
+  <label><input type="checkbox" class="evidence" value="ゴーストオーブ"> ゴーストオーブ</label>
+  <label><input type="checkbox" class="evidence" value="氷点下"> 氷点下</label>
+</div>
+
+<script>
+function filterGhosts() {
+  const checked = Array.from(document.querySelectorAll('.evidence:checked')).map(c => c.value);
+  document.querySelectorAll('.ghost').forEach(div => {
+    const evidence = div.getAttribute('data-evidence').split(',');
+    const matched = checked.every(e => evidence.includes(e));
+    div.style.display = matched ? 'block' : 'none';
+  });
+}
+document.querySelectorAll('.evidence').forEach(chk => chk.addEventListener('change', filterGhosts));
+</script>
+<div class='ghost' data-evidence='EMF,スピボ,ライティング'>
+<div class='ghost-name'>スピリット</div>
+<div class='ghost-detail'>
+<b>証拠：</b>EMF / スピボ / ライティング<br>
+<b>通常の足音：</b> <button onclick="document.getElementById('スピリット_normal').play()">▶️ 再生</button><br>
+<audio id='スピリット_normal' src='sei_normal.mp3'></audio><br>
+</div></div>
+<div class='ghost' data-evidence='EMF,スピボ,DOTS'>
+<div class='ghost-name'>レイス</div>
+<div class='ghost-detail'>
+<b>証拠：</b>EMF / スピボ / DOTS<br>
+<b>通常の足音：</b> <button onclick="document.getElementById('レイス_normal').play()">▶️ 再生</button><br>
+<audio id='レイス_normal' src='sei_normal.mp3'></audio><br>
+</div></div>
+<div class='ghost' data-evidence='スピボ,指紋,DOTS'>
+<div class='ghost-name'>ファントム</div>
+<div class='ghost-detail'>
+<b>証拠：</b>スピボ / 指紋 / DOTS<br>
+<b>通常の足音：</b> <button onclick="document.getElementById('ファントム_normal').play()">▶️ 再生</button><br>
+<audio id='ファントム_normal' src='sei_normal.mp3'></audio><br>
+</div></div>
+<div class='ghost' data-evidence='スピボ,指紋,ライティング'>
+<div class='ghost-name'>ポルターガイスト</div>
+<div class='ghost-detail'>
+<b>証拠：</b>スピボ / 指紋 / ライティング<br>
+<b>通常の足音：</b> <button onclick="document.getElementById('ポルターガイスト_normal').play()">▶️ 再生</button><br>
+<audio id='ポルターガイスト_normal' src='sei_normal.mp3'></audio><br>
+</div></div>
+<div class='ghost' data-evidence='DOTS,指紋,ゴーストオーブ'>
+<div class='ghost-name'>バンシー</div>
+<div class='ghost-detail'>
+<b>証拠：</b>DOTS / 指紋 / ゴーストオーブ<br>
+<b>通常の足音：</b> <button onclick="document.getElementById('バンシー_normal').play()">▶️ 再生</button><br>
+<audio id='バンシー_normal' src='sei_normal.mp3'></audio><br>
+</div></div>
+<div class='ghost' data-evidence='EMF,指紋,氷点下'>
+<div class='ghost-name'>ジン</div>
+<div class='ghost-detail'>
+<b>証拠：</b>EMF / 指紋 / 氷点下<br>
+<b>通常の足音：</b> <button onclick="document.getElementById('ジン_normal').play()">▶️ 再生</button><br>
+<audio id='ジン_normal' src='sei_normal.mp3'></audio><br>
+</div></div>
+<div class='ghost' data-evidence='スピボ,ゴーストオーブ,ライティング'>
+<div class='ghost-name'>メアー</div>
+<div class='ghost-detail'>
+<b>証拠：</b>スピボ / ゴーストオーブ / ライティング<br>
+<b>通常の足音：</b> <button onclick="document.getElementById('メアー_normal').play()">▶️ 再生</button><br>
+<audio id='メアー_normal' src='sei_normal.mp3'></audio><br>
+</div></div>
+<div class='ghost' data-evidence='ライティング,氷点下,ゴーストオーブ'>
+<div class='ghost-name'>レヴナント</div>
+<div class='ghost-detail'>
+<b>証拠：</b>ライティング / 氷点下 / ゴーストオーブ<br>
+<b>通常の足音：</b> <button onclick="document.getElementById('レヴナント_normal').play()">▶️ 再生</button><br>
+<audio id='レヴナント_normal' src='sei_normal.mp3'></audio><br>
+<b>特殊な足音：</b> <button onclick="document.getElementById('レヴナント_special').play()">▶️ 再生</button><br>
+<audio id='レヴナント_special' src='revenant_undetected.mp3'></audio><br>
+</div></div>
+<div class='ghost' data-evidence='EMF,ライティング,氷点下'>
+<div class='ghost-name'>シェード</div>
+<div class='ghost-detail'>
+<b>証拠：</b>EMF / ライティング / 氷点下<br>
+<b>通常の足音：</b> <button onclick="document.getElementById('シェード_normal').play()">▶️ 再生</button><br>
+<audio id='シェード_normal' src='sei_normal.mp3'></audio><br>
+</div></div>
+<div class='ghost' data-evidence='指紋,ライティング,氷点下'>
+<div class='ghost-name'>デーモン</div>
+<div class='ghost-detail'>
+<b>証拠：</b>指紋 / ライティング / 氷点下<br>
+<b>通常の足音：</b> <button onclick="document.getElementById('デーモン_normal').play()">▶️ 再生</button><br>
+<audio id='デーモン_normal' src='sei_normal.mp3'></audio><br>
+</div></div>
+<div class='ghost' data-evidence='ゴーストオーブ,氷点下,DOTS'>
+<div class='ghost-name'>幽霊</div>
+<div class='ghost-detail'>
+<b>証拠：</b>ゴーストオーブ / 氷点下 / DOTS<br>
+<b>通常の足音：</b> <button onclick="document.getElementById('幽霊_normal').play()">▶️ 再生</button><br>
+<audio id='幽霊_normal' src='sei_normal.mp3'></audio><br>
+</div></div>
+<div class='ghost' data-evidence='EMF,氷点下,DOTS'>
+<div class='ghost-name'>鬼</div>
+<div class='ghost-detail'>
+<b>証拠：</b>EMF / 氷点下 / DOTS<br>
+<b>通常の足音：</b> <button onclick="document.getElementById('鬼_normal').play()">▶️ 再生</button><br>
+<audio id='鬼_normal' src='sei_normal.mp3'></audio><br>
+</div></div>
+<div class='ghost' data-evidence='スピボ,ゴーストオーブ,DOTS'>
+<div class='ghost-name'>妖怪</div>
+<div class='ghost-detail'>
+<b>証拠：</b>スピボ / ゴーストオーブ / DOTS<br>
+<b>通常の足音：</b> <button onclick="document.getElementById('妖怪_normal').play()">▶️ 再生</button><br>
+<audio id='妖怪_normal' src='sei_normal.mp3'></audio><br>
+</div></div>
+<div class='ghost' data-evidence='指紋,ゴーストオーブ,氷点下'>
+<div class='ghost-name'>ハントゥ</div>
+<div class='ghost-detail'>
+<b>証拠：</b>指紋 / ゴーストオーブ / 氷点下<br>
+<b>通常の足音：</b> <button onclick="document.getElementById('ハントゥ_normal').play()">▶️ 再生</button><br>
+<audio id='ハントゥ_normal' src='sei_normal.mp3'></audio><br>
+<b>特殊な足音：</b> <button onclick="document.getElementById('ハントゥ_special').play()">▶️ 再生</button><br>
+<audio id='ハントゥ_special' src='hantu.mp3'></audio><br>
+</div></div>
+<div class='ghost' data-evidence='EMF,指紋,DOTS'>
+<div class='ghost-name'>御霊</div>
+<div class='ghost-detail'>
+<b>証拠：</b>EMF / 指紋 / DOTS<br>
+<b>通常の足音：</b> <button onclick="document.getElementById('御霊_normal').play()">▶️ 再生</button><br>
+<audio id='御霊_normal' src='sei_normal.mp3'></audio><br>
+</div></div>
+<div class='ghost' data-evidence='スピボ,ゴーストオーブ,氷点下'>
+<div class='ghost-name'>怨霊</div>
+<div class='ghost-detail'>
+<b>証拠：</b>スピボ / ゴーストオーブ / 氷点下<br>
+<b>通常の足音：</b> <button onclick="document.getElementById('怨霊_normal').play()">▶️ 再生</button><br>
+<audio id='怨霊_normal' src='sei_normal.mp3'></audio><br>
+</div></div>
+<div class='ghost' data-evidence='EMF,スピボ,氷点下'>
+<div class='ghost-name'>ツインズ（本体）</div>
+<div class='ghost-detail'>
+<b>証拠：</b>EMF / スピボ / 氷点下<br>
+<b>通常の足音：</b> <button onclick="document.getElementById('ツインズ_本体_normal').play()">▶️ 再生</button><br>
+<audio id='ツインズ_本体_normal' src='sei_normal.mp3'></audio><br>
+<b>特殊な足音：</b> <button onclick="document.getElementById('ツインズ_本体_special').play()">▶️ 再生</button><br>
+<audio id='ツインズ_本体_special' src='twins_main.mp3'></audio><br>
+</div></div>
+<div class='ghost' data-evidence='EMF,スピボ,氷点下'>
+<div class='ghost-name'>ツインズ（分身）</div>
+<div class='ghost-detail'>
+<b>証拠：</b>EMF / スピボ / 氷点下<br>
+<b>通常の足音：</b> <button onclick="document.getElementById('ツインズ_分身_normal').play()">▶️ 再生</button><br>
+<audio id='ツインズ_分身_normal' src='sei_normal.mp3'></audio><br>
+<b>特殊な足音：</b> <button onclick="document.getElementById('ツインズ_分身_special').play()">▶️ 再生</button><br>
+<audio id='ツインズ_分身_special' src='twins_clone.mp3'></audio><br>
+</div></div>
+<div class='ghost' data-evidence='EMF,ゴーストオーブ,DOTS'>
+<div class='ghost-name'>雷獣</div>
+<div class='ghost-detail'>
+<b>証拠：</b>EMF / ゴーストオーブ / DOTS<br>
+<b>通常の足音：</b> <button onclick="document.getElementById('雷獣_normal').play()">▶️ 再生</button><br>
+<audio id='雷獣_normal' src='sei_normal.mp3'></audio><br>
+<b>特殊な足音：</b> <button onclick="document.getElementById('雷獣_special').play()">▶️ 再生</button><br>
+<audio id='雷獣_special' src='raiju_boost.mp3'></audio><br>
+</div></div>
+<div class='ghost' data-evidence='EMF,指紋,ゴーストオーブ'>
+<div class='ghost-name'>化け狐</div>
+<div class='ghost-detail'>
+<b>証拠：</b>EMF / 指紋 / ゴーストオーブ<br>
+<b>通常の足音：</b> <button onclick="document.getElementById('化け狐_normal').play()">▶️ 再生</button><br>
+<audio id='化け狐_normal' src='sei_normal.mp3'></audio><br>
+</div></div>
+<div class='ghost' data-evidence='スピボ,指紋,氷点下'>
+<div class='ghost-name'>ミミック</div>
+<div class='ghost-detail'>
+<b>証拠：</b>スピボ / 指紋 / 氷点下<br>
+<b>通常の足音：</b> <button onclick="document.getElementById('ミミック_normal').play()">▶️ 再生</button><br>
+<audio id='ミミック_normal' src='sei_normal.mp3'></audio><br>
+</div></div>
+<div class='ghost' data-evidence='スピボ,ライティング,氷点下'>
+<div class='ghost-name'>モーロイ</div>
+<div class='ghost-detail'>
+<b>証拠：</b>スピボ / ライティング / 氷点下<br>
+<b>通常の足音：</b> <button onclick="document.getElementById('モーロイ_normal').play()">▶️ 再生</button><br>
+<audio id='モーロイ_normal' src='sei_normal.mp3'></audio><br>
+<b>特殊な足音：</b> <button onclick="document.getElementById('モーロイ_special').play()">▶️ 再生</button><br>
+<audio id='モーロイ_special' src='moroi_fastest.mp3'></audio><br>
+</div></div>
+<div class='ghost' data-evidence='スピボ,ライティング,DOTS'>
+<div class='ghost-name'>デオヘン</div>
+<div class='ghost-detail'>
+<b>証拠：</b>スピボ / ライティング / DOTS<br>
+<b>通常の足音：</b> <button onclick="document.getElementById('デオヘン_normal').play()">▶️ 再生</button><br>
+<audio id='デオヘン_normal' src='sei_normal.mp3'></audio><br>
+<b>特殊な足音：</b> <button onclick="document.getElementById('デオヘン_special').play()">▶️ 再生</button><br>
+<audio id='デオヘン_special' src='deogen_fast.mp3'></audio><br>
+</div></div>
+<div class='ghost' data-evidence='DOTS,スピボ,氷点下'>
+<div class='ghost-name'>セーイ</div>
+<div class='ghost-detail'>
+<b>証拠：</b>DOTS / スピボ / 氷点下<br>
+<b>通常の足音：</b> <button onclick="document.getElementById('セーイ_normal').play()">▶️ 再生</button><br>
+<audio id='セーイ_normal' src='sei_normal.mp3'></audio><br>
+<b>特殊な足音：</b> <button onclick="document.getElementById('セーイ_special').play()">▶️ 再生</button><br>
+<audio id='セーイ_special' src='sei_special_v2.mp3'></audio><br>
+</div></div>
+</body></html>
