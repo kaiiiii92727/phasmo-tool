@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phasmophobia ゴースト診断完全版</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background: #111; color: #fff; }
+    .ghost { margin: 1em 0; padding: 1em; border: 1px solid #555; border-radius: 8px; background: #222; }
+    .ghost-name { font-size: 1.2em; font-weight: bold; margin-bottom: 0.5em; }
+    .hidden { display: none; }
+    input[type="checkbox"] { margin-right: 0.5em; }
+    .filter { margin-bottom: 1em; }
+  </style>
+</head>
+<body>
+  <h1>Phasmophobia ゴースト診断ツール（完全版）</h1>
+
+  <div class="filter">
+    <h2>✅ 証拠で絞り込み</h2>
+    <label><input type="checkbox" class="evidence" value="EMF">EMFレベル5</label><br>
+    <label><input type="checkbox" class="evidence" value="指紋">指紋</label><br>
+    <label><input type="checkbox" class="evidence" value="スピリットボックス">スピボ</label><br>
+    <label><input type="checkbox" class="evidence" value="ゴーストオーブ">オーブ</label><br>
+    <label><input type="checkbox" class="evidence" value="ライティング">ライティング</label><br>
+    <label><input type="checkbox" class="evidence" value="氷点下温度">氷点下</label><br>
+    <label><input type="checkbox" class="evidence" value="DOTS">DOTS</label><br>
+  </div>
+
+  <div id="ghost-list">
+    <!-- JSで自動生成 -->
+  </div>
+
+  <script>
+    const ghosts = [
+      {
+        name: "レイス",
+        evidence: ["EMF", "スピリットボックス", "DOTS"],
+        sanity: "50%",
+        ability: "足音が無く塩を踏んでも跡が残らない。テレポート能力あり。"
+      },
+      {
+        name: "ハントゥ",
+        evidence: ["氷点下温度", "指紋", "ゴーストオーブ"],
+        sanity: "50%",
+        ability: "寒い場所で高速移動、温かい場所で遅い。温度に依存。"
+      },
+      {
+        name: "デオゲン",
+        evidence: ["スピリットボックス", "ライティング", "DOTS"],
+        sanity: "40%",
+        ability: "プレイヤーに向かって遅く追いかけてくる。近距離特化。"
+      }
+    ];
+
+    const listEl = document.getElementById("ghost-list");
+    const checkboxes = document.querySelectorAll(".evidence");
+
+    function render() {
+      const selected = [...checkboxes].filter(cb => cb.checked).map(cb => cb.value);
+      listEl.innerHTML = "";
+      ghosts.forEach(g => {
+        const match = selected.every(ev => g.evidence.includes(ev));
+        if (match) {
+          const div = document.createElement("div");
+          div.className = "ghost";
+          div.innerHTML = `
+            <div class="ghost-name">${g.name}</div>
+            <div><strong>証拠:</strong> ${g.evidence.join(", ")}</div>
+            <div><strong>正気度:</strong> ${g.sanity}</div>
+            <div><strong>特殊能力:</strong> ${g.ability}</div>
+          `;
+          listEl.appendChild(div);
+        }
+      });
+    }
+
+    checkboxes.forEach(cb => cb.addEventListener("change", render));
+    render();
+  </script>
+</body>
+</html>
