@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Phasmophobia ゴースト診断完全版</title>
+<style>
+body { font-family: sans-serif; padding: 10px; background: #f5f5f5; }
+.ghost { margin: 10px 0; padding: 10px; background: white; border-left: 5px solid #2196F3; }
+.ghost-name { font-weight: bold; font-size: 1.2em; }
+.ghost-detail { font-size: 0.9em; margin-top: 4px; }
+.ghost-detail ul { margin: 0; padding-left: 20px; }
+button { margin-top: 5px; }
+</style>
+<script>
+function playSound(id) {
+  var audio = document.getElementById(id);
+  audio.play();
+}
+</script>
+</head>
+<body>
+<h1>Phasmophobia ゴースト診断（ファントム〜ジン）</h1><div class="filter">
+<h3>✅ 証拠で絞り込み</h3>
+<label><input class="evidence" type="checkbox" value="EMF"/> EMF</label>
+<label><input class="evidence" type="checkbox" value="指紋"/> 指紋</label>
+<label><input class="evidence" type="checkbox" value="スピボ"/> スピボ</label>
+<label><input class="evidence" type="checkbox" value="ライティング"/> ライティング</label>
+<label><input class="evidence" type="checkbox" value="DOTS"/> DOTS</label>
+<label><input class="evidence" type="checkbox" value="オーブ"/> オーブ</label>
+<label><input class="evidence" type="checkbox" value="氷点下"/> 氷点下</label>
+<div id="hit-count">✅ 一致するゴースト: 全件表示中</div>
+</div>
+<div class="ghost" data-evidence="EMF,スピボ,ライティング">
+<div class="ghost-name">スピリット</div>
+<div class="ghost-detail">
+<strong>証拠:</strong> EMF, スピボ, ライティング
+            <ul>
+<li><strong>正気度:</strong> 50%</li>
+<li><strong>スマッジ効果:</strong> 180秒</li>
+<li><strong>速度:</strong> 通常（1.7m/s）</li>
+<li><strong>特殊能力:</strong> 特になし</li>
+<li><strong>備考:</strong> 初心者向け。挙動は非常にシンプル。</li>
+</ul>
+<div><strong>通常の足音:</strong><br/>
+<audio controls="" id="audio_normal_0" src="sei_normal.mp3"></audio>
+</div>
+</div>
+</div>
+<div class="ghost" data-evidence="EMF,スピボ,DOTS">
+<div class="ghost-name">レイス</div>
+<div class="ghost-detail">
+<strong>証拠:</strong> EMF, スピボ, DOTS
+            <ul>
+<li><strong>正気度:</strong> 50%</li>
+<li><strong>スマッジ効果:</strong> 90秒</li>
+<li><strong>速度:</strong> 通常（1.7m/s）</li>
+<li><strong>特殊能力:</strong> 塩を踏んでも足跡が残らない。浮遊して地面を歩かない。</li>
+<li><strong>備考:</strong> UVライトでは足跡が検出できない。</li>
+</ul>
+<div><strong>通常の足音:</strong><br/>
+<audio controls="" id="audio_normal_1" src="sei_normal.mp3"></audio>
+</div>
+</div>
+</div>
+<div class="ghost" data-evidence="スピボ,DOTS,指紋">
+<div class="ghost-name">ファントム</div>
+<div class="ghost-detail">
+<strong>証拠:</strong> スピボ, DOTS, 指紋
+            <ul>
+<li><strong>正気度:</strong> 50%</li>
+<li><strong>スマッジ効果:</strong> 90秒</li>
+<li><strong>速度:</strong> 通常（1.7m/s）</li>
+<li><strong>特殊能力:</strong> 写真を撮ると一時的に姿を消す。見続けると正気度を大幅に削る。</li>
+<li><strong>備考:</strong> DOTSで姿が見えないことが多い。</li>
+</ul>
+<div><strong>通常の足音:</strong><br/>
+<audio controls="" id="audio_normal_2" src="sei_normal.mp3"></audio>
+</div>
+</div>
+</div>
+<div class="ghost" data-evidence="スピボ,指紋,ライティング">
+<div class="ghost-name">ポルターガイスト</div>
+<div class="ghost-detail">
+<strong>証拠:</strong> スピボ, 指紋, ライティング
+            <ul>
+<li><strong>正気度:</strong> 50%</li>
+<li><strong>スマッジ効果:</strong> 90秒</li>
+<li><strong>速度:</strong> 通常（1.7m/s）</li>
+<li><strong>特殊能力:</strong> 複数の物を一度に飛ばす。投擲音が多い。</li>
+<li><strong>備考:</strong> 証拠が出にくい時は部屋の物の量で判断。</li>
+</ul>
+<div><strong>通常の足音:</strong><br/>
+<audio controls="" id="audio_normal_3" src="sei_normal.mp3"></audio>
+</div>
+</div>
+</div>
+<div class="ghost" data-evidence="DOTS,指紋,オーブ">
+<div class="ghost-name">バンシー</div>
+<div class="ghost-detail">
+<strong>証拠:</strong> DOTS, 指紋, オーブ
+            <ul>
+<li><strong>正気度:</strong> 50%</li>
+<li><strong>スマッジ効果:</strong> 90秒</li>
+<li><strong>速度:</strong> 通常（1.7m/s）</li>
+<li><strong>特殊能力:</strong> ターゲットを1人に絞って追跡。対象が建物外にいるとハントしない。</li>
+<li><strong>備考:</strong> パラボラマイクで叫び声を検出可能。</li>
+</ul>
+<div><strong>通常の足音:</strong><br/>
+<audio controls="" id="audio_normal_4" src="sei_normal.mp3"></audio>
+</div>
+</div>
+</div>
+<div class="ghost" data-evidence="EMF,指紋,氷点下">
+<div class="ghost-name">ジン</div>
+<div class="ghost-detail">
+<strong>証拠:</strong> EMF, 指紋, 氷点下
+            <ul>
+<li><strong>正気度:</strong> 50%</li>
+<li><strong>スマッジ効果:</strong> 90秒</li>
+<li><strong>速度:</strong> ブレーカーON時に高速（2.5m/s）</li>
+<li><strong>特殊能力:</strong> ブレーカーが入っていると高速移動。遠距離から位置を特定。</li>
+<li><strong>備考:</strong> ブレーカーOFFで能力無効化可能。</li>
+</ul>
+<div><strong>通常の足音:</strong><br/>
+<audio controls="" id="audio_normal_5" src="sei_normal.mp3"></audio>
+</div>
+</div>
+</div>
+<div class="ghost" data-evidence="スピボ,ライティング,オーブ">
+<div class="ghost-name">メアー</div>
+<div class="ghost-detail">
+<strong>証拠:</strong> スピボ, ライティング, オーブ
+            <ul>
+<li><strong>正気度:</strong> 60%</li>
+<li><strong>スマッジ効果:</strong> 90秒</li>
+<li><strong>速度:</strong> 通常（1.7m/s）</li>
+<li><strong>特殊能力:</strong> 暗闇で活発化し、明るいとハントしにくい。</li>
+<li><strong>備考:</strong> ブレーカーや電気のオン・オフに注目。</li>
+</ul>
+<div><strong>通常の足音:</strong><br/>
+<audio controls="" id="audio_normal_6" src="sei_normal.mp3"></audio>
+</div>
+</div>
+</div>
+<div class="ghost" data-evidence="ライティング,オーブ,氷点下">
+<div class="ghost-name">レヴナント</div>
+<div class="ghost-detail">
+<strong>証拠:</strong> ライティング, オーブ, 氷点下
+            <ul>
+<li><strong>正気度:</strong> 50%</li>
+<li><strong>スマッジ効果:</strong> 90秒</li>
+<li><strong>速度:</strong> 視認時に高速（3.0m/s）、非視認時に極端に遅い（1.0m/s）</li>
+<li><strong>特殊能力:</strong> 視界に入ると高速で追跡、見失うと大幅減速。特殊な足音: 無音に近い足音（高速移動時も静か）</li>
+<li><strong>備考:</strong> 隠れていれば比較的安全。 特殊な足音: 無音に近い足音（高速移動時も静か）。</li>
+</ul>
+<div><strong>通常の足音:</strong><br/>
+<audio controls="" id="audio_normal_7" src="sei_normal.mp3"></audio>
+</div>
+<div><strong>特殊な足音:</strong> 無音に近い足音（高速移動時も静か）<br/>
+<audio controls="" id="audio_special_7" src="revenant_undetected.mp3"></audio>
+</div>
+</div>
+</div>
+<div class="ghost" data-evidence="EMF,ライティング,氷点下">
+<div class="ghost-name">シェード</div>
+<div class="ghost-detail">
+<strong>証拠:</strong> EMF, ライティング, 氷点下
+            <ul>
+<li><strong>正気度:</strong> 35%</li>
+<li><strong>スマッジ効果:</strong> 90秒</li>
+<li><strong>速度:</strong> 通常（1.7m/s）</li>
+<li><strong>特殊能力:</strong> 複数人が近くにいるとゴーストイベントやハントが起きにくい。</li>
+<li><strong>備考:</strong> 証拠が出づらく消極的。</li>
+</ul>
+<div><strong>通常の足音:</strong><br/>
+<audio controls="" id="audio_normal_8" src="sei_normal.mp3"></audio>
+</div>
+</div>
+</div>
+<div class="ghost" data-evidence="指紋,ライティング,氷点下">
+<div class="ghost-name">デーモン</div>
+<div class="ghost-detail">
+<strong>証拠:</strong> 指紋, ライティング, 氷点下
+            <ul>
+<li><strong>正気度:</strong> 70%</li>
+<li><strong>スマッジ効果:</strong> 90秒</li>
+<li><strong>速度:</strong> 通常（1.7m/s）</li>
+<li><strong>特殊能力:</strong> 全ゴースト中もっとも早い段階でハントを開始する（正気度70%以下）。</li>
+<li><strong>備考:</strong> 十字架でのハント防止範囲が広い。</li>
+</ul>
+<div><strong>通常の足音:</strong><br/>
+<audio controls="" id="audio_normal_9" src="sei_normal.mp3"></audio>
+</div>
+</div>
+</div>
+<div class="ghost" data-evidence="オーブ,氷点下,スピボ">
+<div class="ghost-name">幽霊</div>
+<div class="ghost-detail">
+<strong>証拠:</strong> オーブ, 氷点下, スピボ
+            <ul>
+<li><strong>正気度:</strong> 50%</li>
+<li><strong>スマッジ効果:</strong> 180秒</li>
+<li><strong>速度:</strong> 通常（1.7m/s）</li>
+<li><strong>特殊能力:</strong> スマッジで長時間追跡を止められる。</li>
+<li><strong>備考:</strong> 最も一般的で判断が難しい。</li>
+</ul>
+<div><strong>通常の足音:</strong><br/>
+<audio controls="" id="audio_normal_10" src="sei_normal.mp3"></audio>
+</div>
+</div>
+</div>
+<div class="ghost" data-evidence="EMF,DOTS,指紋">
+<div class="ghost-name">鬼</div>
+<div class="ghost-detail">
+<strong>証拠:</strong> EMF, DOTS, 指紋
+            <ul>
+<li><strong>正気度:</strong> 50%</li>
+<li><strong>スマッジ効果:</strong> 90秒</li>
+<li><strong>速度:</strong> 通常（1.7m/s）</li>
+<li><strong>特殊能力:</strong> 正気度の下がりが速く、物体の投擲も活発。</li>
+<li><strong>備考:</strong> 動作が早く見た目でも判断しやすい。</li>
+</ul>
+<div><strong>通常の足音:</strong><br/>
+<audio controls="" id="audio_normal_11" src="sei_normal.mp3"></audio>
+</div>
+</div>
+</div>
+<div class="ghost" data-evidence="スピボ,DOTS,オーブ">
+<div class="ghost-name">妖怪</div>
+<div class="ghost-detail">
+<strong>証拠:</strong> スピボ, DOTS, オーブ
+            <ul>
+<li><strong>正気度:</strong> 80%</li>
+<li><strong>スマッジ効果:</strong> 90秒</li>
+<li><strong>速度:</strong> 通常（1.7m/s）</li>
+<li><strong>特殊能力:</strong> プレイヤーの会話に反応してハント開始。</li>
+<li><strong>備考:</strong> マイクON中に注意。会話しないことで回避可能。</li>
+</ul>
+<div><strong>通常の足音:</strong><br/>
+<audio controls="" id="audio_normal_12" src="sei_normal.mp3"></audio>
+</div>
+</div>
+</div>
+<div class="ghost" data-evidence="氷点下,指紋,オーブ">
+<div class="ghost-name">ハントゥ</div>
+<div class="ghost-detail">
+<strong>証拠:</strong> 氷点下, 指紋, オーブ
+            <ul>
+<li><strong>正気度:</strong> 50%</li>
+<li><strong>スマッジ効果:</strong> 90秒</li>
+<li><strong>速度:</strong> 気温により変化（寒い場所で高速移動）</li>
+<li><strong>特殊能力:</strong> 寒いと高速、ブレーカーONで減速。</li>
+<li><strong>備考:</strong> 息の白さ・ブレーカー確認で判断。 特殊な足音: 寒冷地で高速な足音を発する。</li>
+</ul>
+<div><strong>通常の足音:</strong><br/>
+<audio controls="" id="audio_normal_13" src="sei_normal.mp3"></audio>
+</div>
+<div><strong>特殊な足音:</strong> 寒冷地で高速な足音を発する<br/>
+<audio controls="" id="audio_special_13" src="hantu.mp3"></audio>
+</div>
+</div>
+</div>
+<div class="ghost" data-evidence="スピボ,ライティング,EMF">
+<div class="ghost-name">御霊</div>
+<div class="ghost-detail">
+<strong>証拠:</strong> スピボ, ライティング, EMF
+            <ul>
+<li><strong>正気度:</strong> 50%</li>
+<li><strong>スマッジ効果:</strong> 180秒</li>
+<li><strong>速度:</strong> 通常（1.7m/s）</li>
+<li><strong>特殊能力:</strong> 死者の魂を宿す存在で、通常の移動パターン。</li>
+<li><strong>備考:</strong> 他ゴーストとの判別が難しいため、証拠を明確に取る。</li>
+</ul>
+<div><strong>通常の足音:</strong><br/>
+<audio controls="" id="audio_normal_14" src="sei_normal.mp3"></audio>
+</div>
+</div>
+</div>
+<div class="ghost" data-evidence="EMF,ライティング,指紋">
+<div class="ghost-name">マイリング</div>
+<div class="ghost-detail">
+<strong>証拠:</strong> EMF, ライティング, 指紋
+            <ul>
+<li><strong>正気度:</strong> 50%</li>
+<li><strong>スマッジ効果:</strong> 90秒</li>
+<li><strong>速度:</strong> 高速（追跡中は速い）、物音を出さない</li>
+<li><strong>特殊能力:</strong> 音を立てずに接近するステルス性の高いゴースト。</li>
+<li><strong>備考:</strong> マイクや足音が極端に少ないのが特徴。 特殊な足音: 極めて静かな足音（近づくまで気づきにくい）。</li>
+</ul>
+<div><strong>通常の足音:</strong><br/>
+<audio controls="" id="audio_normal_15" src="sei_normal.mp3"></audio>
+</div>
+<div><strong>特殊な足音:</strong> 極めて静かな足音（近づくまで気づきにくい）<br/>
+<audio controls="" id="audio_special_15" src="moroi_fastest.mp3"></audio>
+</div>
+</div>
+</div>
+<div class="ghost" data-evidence="氷点下,ライティング,オーブ">
+<div class="ghost-name">怨霊</div>
+<div class="ghost-detail">
+<strong>証拠:</strong> 氷点下, ライティング, オーブ
+            <ul>
+<li><strong>正気度:</strong> 50%</li>
+<li><strong>スマッジ効果:</strong> 90秒</li>
+<li><strong>速度:</strong> 通常（1.7m/s）</li>
+<li><strong>特殊能力:</strong> 対象に取り憑き、特定人物の正気度に反応して行動。</li>
+<li><strong>備考:</strong> 単独での行動中に活発になりやすい。</li>
+</ul>
+<div><strong>通常の足音:</strong><br/>
+<audio controls="" id="audio_normal_16" src="sei_normal.mp3"></audio>
+</div>
+</div>
+</div>
+<div class="ghost" data-evidence="EMF,スピボ,氷点下">
+<div class="ghost-name">ツインズ</div>
+<div class="ghost-detail">
+<strong>証拠:</strong> EMF, スピボ, 氷点下
+            <ul>
+<li><strong>正気度:</strong> 50%</li>
+<li><strong>スマッジ効果:</strong> 90秒</li>
+<li><strong>速度:</strong> 1体は遅く、もう1体は速い</li>
+<li><strong>特殊能力:</strong> 2体のように振る舞い、同時に複数箇所で活動する。</li>
+<li><strong>備考:</strong> 活動場所が複数に分かれていれば疑う。 特殊な足音: 2種類の足音（本体と分身）。</li>
+</ul>
+<div><strong>通常の足音:</strong><br/>
+<audio controls="" id="audio_normal_17" src="sei_normal.mp3"></audio>
+</div>
+<div><strong>特殊な足音:</strong><br/>
+本体：<audio controls="" id="audio_twins_main" src="twins_main.mp3"></audio>
+<br/>
+分身：<audio controls="" id="audio_twins_clone" src="twins_clone.mp3"></audio>
+</div>
+</div>
+</div>
+<div class="ghost" data-evidence="EMF,DOTS,オーブ">
+<div class="ghost-name">雷獣</div>
+<div class="ghost-detail">
+<strong>証拠:</strong> EMF, DOTS, オーブ
+            <ul>
+<li><strong>正気度:</strong> 65%</li>
+<li><strong>スマッジ効果:</strong> 90秒</li>
+<li><strong>速度:</strong> 電子機器付近で高速（2.5m/s）</li>
+<li><strong>特殊能力:</strong> 電子機器の近くで移動速度が上昇する。</li>
+<li><strong>備考:</strong> 電源のON/OFFに敏感。ブレーカーを切ると弱体化。 特殊な足音: 電子機器付近で高速足音。</li>
+</ul>
+<div><strong>通常の足音:</strong><br/>
+<audio controls="" id="audio_normal_18" src="sei_normal.mp3"></audio>
+</div>
+<div><strong>特殊な足音:</strong> 電子機器付近で高速足音<br/>
+<audio controls="" id="audio_special_18" src="raiju_boost.mp3"></audio>
+</div>
+</div>
+</div>
+<div class="ghost" data-evidence="DOTS,オーブ,氷点下">
+<div class="ghost-name">化け狐</div>
+<div class="ghost-detail">
+<strong>証拠:</strong> DOTS, オーブ, 氷点下
+            <ul>
+<li><strong>正気度:</strong> 50%</li>
+<li><strong>スマッジ効果:</strong> 90秒</li>
+<li><strong>速度:</strong> 通常（1.7m/s）</li>
+<li><strong>特殊能力:</strong> ハント開始時にプレイヤーの近くに姿を現す（テレポート）。</li>
+<li><strong>備考:</strong> DOTS反応が見えにくい。ハント頻度で見極め。</li>
+</ul>
+<div><strong>通常の足音:</strong><br/>
+<audio controls="" id="audio_normal_19" src="sei_normal.mp3"></audio>
+</div>
+</div>
+</div>
+<div class="ghost" data-evidence="スピボ,指紋,氷点下">
+<div class="ghost-name">ミミック</div>
+<div class="ghost-detail">
+<strong>証拠:</strong> スピボ, 指紋, 氷点下
+            <ul>
+<li><strong>正気度:</strong> 50%</li>
+<li><strong>スマッジ効果:</strong> 90秒</li>
+<li><strong>速度:</strong> 模倣先に依存</li>
+<li><strong>特殊能力:</strong> 他のゴーストの挙動を模倣する。ゴーストオーブも偽装として出現。</li>
+<li><strong>備考:</strong> 証拠に“偽のゴーストオーブ”が出る唯一のゴースト。</li>
+</ul>
+<div><strong>通常の足音:</strong><br/>
+<audio controls="" id="audio_normal_20" src="sei_normal.mp3"></audio>
+</div>
+</div>
+</div>
+<div class="ghost" data-evidence="スピボ,ライティング,オーブ">
+<div class="ghost-name">モーロイ</div>
+<div class="ghost-detail">
+<strong>証拠:</strong> スピボ, ライティング, オーブ
+            <ul>
+<li><strong>正気度:</strong> 50%</li>
+<li><strong>スマッジ効果:</strong> 90秒</li>
+<li><strong>速度:</strong> 正気度が低いと高速（最大2.25m/s）</li>
+<li><strong>特殊能力:</strong> 呪いをかけて正気度を継続的に下げる。</li>
+<li><strong>備考:</strong> 呪われた人が無音状態になり、見落としやすい。 特殊な足音: 正気度が下がるほど足音が高速化。</li>
+</ul>
+<div><strong>通常の足音:</strong><br/>
+<audio controls="" id="audio_normal_21" src="sei_normal.mp3"></audio>
+</div>
+<div><strong>特殊な足音:</strong> 正気度が下がるほど足音が高速化<br/>
+<audio controls="" id="audio_special_21" src="moroi_fastest.mp3"></audio>
+</div>
+</div>
+</div>
+<div class="ghost" data-evidence="スピボ,DOTS,ライティング">
+<div class="ghost-name">デオヘン</div>
+<div class="ghost-detail">
+<strong>証拠:</strong> スピボ, DOTS, ライティング
+            <ul>
+<li><strong>正気度:</strong> 40%</li>
+<li><strong>スマッジ効果:</strong> 90秒</li>
+<li><strong>速度:</strong> 遠距離：高速 / 近距離：超鈍足（0.4m/s）</li>
+<li><strong>特殊能力:</strong> 常にプレイヤーの位置を把握し追いかけるが、近づくと減速。</li>
+<li><strong>備考:</strong> 近距離で非常に遅くなるため、回避しやすい。 特殊な足音: 近距離では超鈍足、遠距離では高速足音。</li>
+</ul>
+<div><strong>通常の足音:</strong><br/>
+<audio controls="" id="audio_normal_22" src="sei_normal.mp3"></audio>
+</div>
+<div><strong>特殊な足音:</strong> 近距離では超鈍足、遠距離では高速足音<br/>
+<audio controls="" id="audio_special_22" src="revenant_undetected.mp3"></audio>
+</div>
+</div>
+</div>
+<div class="ghost" data-evidence="DOTS,ライティング,オーブ">
+<div class="ghost-name">セーイ</div>
+<div class="ghost-detail">
+<strong>証拠:</strong> DOTS, ライティング, オーブ
+            <ul>
+<li><strong>正気度:</strong> 60%</li>
+<li><strong>スマッジ効果:</strong> 90秒</li>
+<li><strong>速度:</strong> 通常（1.7m/s）</li>
+<li><strong>特殊能力:</strong> 詩を朗読するような音（歌）を発する。</li>
+<li><strong>備考:</strong> DOTS反応がはっきりしている。音に注目。</li>
+</ul>
+<div><strong>通常の足音:</strong><br/>
+<audio controls="" id="audio_normal_23" src="sei_normal.mp3"></audio>
+</div>
+<div><strong>特殊な足音:</strong> セーイ特有の朗読風足音<br/>
+<audio controls="" id="audio_special_23" src="sei_special_v3.mp3"></audio>
+</div>
+</div>
+</div>
+<script>
+function filterGhosts() {
+  const checked = Array.from(document.querySelectorAll('.evidence:checked')).map(c => c.value);
+  let hitCount = 0;
+  document.querySelectorAll('.ghost').forEach(div => {
+    const evidence = div.getAttribute('data-evidence').split(',');
+    const matched = checked.every(e => evidence.includes(e));
+    if (matched) {
+      div.style.display = 'block';
+      hitCount++;
+    } else {
+      div.style.display = 'none';
+    }
+  });
+  document.getElementById('hit-count').textContent = `✅ 一致するゴースト: ${hitCount}体`;
+}
+window.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.evidence').forEach(chk => chk.addEventListener('change', filterGhosts));
+  filterGhosts();
+});
+</script></body>
+</html>
